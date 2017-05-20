@@ -1,0 +1,51 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.container {
+  display: block;
+  width: 1024px;
+  margin: 0 auto;
+}
+/*按鈕樣式設定*/
+#header .center{
+	text-align: center;
+}
+
+.FontStyle {
+  font-weight: normal;
+  font-size: 20px;
+}
+.InputWidth {
+  width: 30%;
+}
+/*dialog置中*/
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+/*(刪除框)dialog細部設定*/
+p{
+	margin: 0;
+}
+/*-----*/
+/*table設定*/
+#cardtable{
+
+	/*width:600px;*/
+}

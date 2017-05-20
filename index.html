@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name ="description" content="Hello World">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 最新編譯和最佳化的 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+        <!-- 選擇性佈景主題 -->
+        <!-- 選擇性 bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        
+        <!-- Main css -->
+        <link rel="stylesheet" href="css/main.css" type="text/css" media="screen">
+        
+        <!-- 選擇性 jquery ui -->
+        <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+      
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+        <!-- jquery ui -->
+<!--         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css"> -->
+
+
+        <title>個人資料表</title>
+    </head>
+    <body>
+    <div id="header">
+      <div class="container">
+        
+        <div class="center">
+        <h1><span class="label label-info">個人資料表</span></h1>
+        </div>
+        
+        <br />
+        
+        <div class="button">
+            <!-- 新增按鈕 -->
+            <button type="button" class="btn btn-success FontStyle" data-toggle="modal" data-target="#AddTable" data-backdrop="static" data-keyboard="false">新增
+            <span class="glyphicon glyphicon-plus"></span></button>
+
+            <!-- 搜尋按鈕 -->
+            <button type="button" class="btn btn-info FontStyle" data-toggle="modal" data-target="#SearchTable" data-backdrop="static" data-keyboard="false">搜尋
+            <span class="glyphicon glyphicon-search"></span></button>
+            
+        </div>
+
+      </div>
+    </div>
+
+<section>
+  
+  <div class="container">
+  <br />
+    <!-- 表格 -->
+        <div class="table">
+            <table id="cardtable" class='table table-striped table-bordered table-hover'>
+                <thead>
+                    <tr>
+                        <th>中文名字</th>
+                        <th>英文名字</th>
+                        <th>性別</th>
+                        <th>手機</th>
+                        <th>電子信箱</th>
+                        <th>修改</th>
+                        <th>刪除</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+  </div>
+</section>
+        
+        
+        
+        
+
+
+        <!-- 新增表單 -->
+        <div class="modal" id="AddTable">
+          <div class="modal-dialog">
+          
+            <!-- 表單標題-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">新增表單</h4>
+              </div>
+              <!-- 表單內容 --> 
+              <div class="modal-body">     
+                  <form data-toggle="validator" role="form" id="addform">
+                  <!-- 中文姓名 -->
+                    <div class="formcnname form-group">
+                      <label for="addcnname">中文姓名</label>
+                        <input type="text" name="cnname" class="form-control InputWidth"
+                        id="addcnname" data-error="請輸入正確的中文姓名" required>
+                        <div class="help-block with-errors"></div>
+                        
+                    </div>
+                      <!-- 英文姓名 -->
+                    <div class="formenname form-group">
+                      <label for="addenname">英文姓名</label>
+                        <input type="text" name="enname" class="form-control InputWidth"
+                            id="addenname" data-error="請輸入正確的英文姓名" required>
+                            <div class="help-block with-errors"></div>
+
+
+                    </div>
+
+                    <div class="formsex form-group">
+                      <div><label>性別</label></div>
+                        <label class="radio-inline">
+                        <input type="radio" name="addsex" value="man" class="radio" checked="checked">男</label>   
+                        <label class="radio-inline">
+                        <input type="radio" name="addsex" value="woman" class="radio">女</label>               
+                    </div>
+
+                    <div class="formephone form-group">
+                      <label for="addphone">手機</label>
+                        <input type="number" name="phone" class="form-control InputWidth"
+                            id="addphone" data-error="手機號碼格式錯誤" required>
+                            <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="formeemail form-group">
+                      <label for="addemail">電子信箱</label>
+                        <input type="email" name="email" class="form-control InputWidth"
+                            id="addemail" data-error="電子信箱格式錯誤" required>
+                            <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="formebutton form-group">
+                      <div class="modal-footer">
+                          <button type="submit" id="RunAdd" class="btn btn-primary">新增</button>
+                          <button type="button" id="RunAddReset" class="btn btn-danger">重新填寫</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                      </div>
+                    </div>
+                      
+                    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                  </form>                  
+                
+              </div>
+      <!--         <div class="modal-footer">
+                  <button type="button" id="RunAdd" class="btn btn-primary">新增</button>
+                  <button type="button" id="RunAddReset" class="btn btn-danger">重新填寫</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              </div> -->
+            </div>
+            
+          </div>
+        </div>
+        
+
+
+        <!-- 搜尋表單 -->
+        <div class="modal" id="SearchTable">
+          <div class="modal-dialog">
+          
+            <!-- 表單標題-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">搜尋表單</h4>
+              </div>
+              <!-- 表單內容 --> 
+              <div class="modal-body">     
+                  <form data-toggle="validator" role="form" id="searchform">
+                  <!-- 中文姓名 -->
+                    <div class="formcnname form-group">
+                      <label for="secnname">中文姓名</label>
+                        <input type="text" name="cnname" class="form-control InputWidth"
+                        id="secnname" data-error="請輸入正確的中文姓名" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                      <!-- 英文姓名 -->
+                    <div class="formenname form-group">
+                      <label for="seenname">英文姓名</label>
+                        <input type="text" name="enname" class="form-control InputWidth"
+                            id="seenname" data-error="請輸入正確的英文姓名" required>
+                            <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="formsex form-group">
+                      <div><label>性別</label></div>
+                        <label class="radio-inline">
+                        <input type="radio" name="sesex" value="man" class="seradio" checked="checked">男</label>   
+                        <label class="radio-inline">
+                        <input type="radio" name="sesex" value="woman" class="seradio">女</label>               
+                    </div>
+
+                    <div class="formenname form-group">
+                      <label for="sephone">手機</label>
+                        <input type="number" name="phone" class="form-control InputWidth"
+                            id="sephone" data-error="手機號碼格式錯誤" required>
+                            <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="formenname form-group">
+                      <label for="seemail">電子信箱</label>
+                        <input type="email" name="email" class="form-control InputWidth"
+                            id="seemail" data-error="電子信箱格式錯誤" required>
+                            <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="formebutton form-group">
+                      <div class="modal-footer">
+                          <button type="submit" id="RunSearch" class="btn btn-primary">搜尋</button>
+                          <button type="button" id="RunSearchReset" class="btn btn-danger">重新填寫</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                      </div>
+                    </div>
+                      
+                    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                  </form>                  
+                
+              </div>
+      <!--         <div class="modal-footer">
+                  <button type="button" id="RunSearch" class="btn btn-primary">搜尋</button>
+                  <button type="button" id="RunSearchReset" class="btn btn-danger">重新填寫</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              </div> -->
+            </div>
+            
+          </div>
+        </div>
+        
+            
+
+
+
+        
+        
+
+          <!-- 修改表單 -->
+        <div class="modal" id="ModifyTable">
+          <div class="modal-dialog">
+          
+            <!-- 表單標題-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">修改表單</h4>
+              </div>
+              <!-- 表單內容 --> 
+              <div class="modal-body">     
+                  <form data-toggle="validator" role="form" id="modifyform">
+                  <!-- 中文姓名 -->
+                    <div class="formcnname form-group">
+                      <label for="mocnname">中文姓名</label>
+                        <input type="text" name="cnname" class="form-control InputWidth"
+                        id="mocnname" data-error="請輸入正確的中文姓名" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                      <!-- 英文姓名 -->
+                    <div class="formenname form-group">
+                      <label for="moenname">英文姓名</label>
+                        <input type="text" name="enname" class="form-control InputWidth"
+                            id="moenname" data-error="請輸入正確的英文姓名" required>
+                            <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="formsex form-group">
+                      <div><label>性別</label></div>
+                        <label class="radio-inline">
+                        <input type="radio" name="mosex" value="man" class="radio" id ="modifyman" checked="checked">男</label>   
+                        <label class="radio-inline">
+                        <input type="radio" name="mosex" value="woman" class="radio" id ="modifywoman">女</label>               
+                    </div>
+
+                    <div class="formenname form-group">
+                      <label for="mophone">手機</label>
+                        <input type="number" name="phone" class="form-control InputWidth"
+                            id="mophone" data-error="手機號碼格式錯誤" required>
+                            <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="formenname form-group">
+                      <label for="moemail">電子信箱</label>
+                        <input type="email" name="email" class="form-control InputWidth"
+                            id="moemail" data-error="電子信箱格式錯誤" required>
+                            <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="formebutton form-group">
+                      <div class="modal-footer">
+                          <button type="submit" id="RunModify" class="btn btn-primary">修改</button>
+                          <button type="button" id="RunModifyReset" class="btn btn-danger">重新填寫</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                      </div>
+                    </div> 
+
+                    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                  </form>                  
+                
+              </div>
+      <!--         <div class="modal-footer">
+                  <button type="button" id="RunModify" class="btn btn-primary">修改</button>
+                  <button type="button" id="RunModifyReset" class="btn btn-danger">重新填寫</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              </div> -->
+            </div>
+            
+          </div>
+        </div>
+                
+       
+
+      <!-- 刪除表單 -->
+        <div class="modal" id="DeleteDialog" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- 表單標題-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">刪除表單</h4>
+              </div>
+              <!-- 表單內容 --> 
+              <div class="modal-body">  
+
+                  <p>您確定要永久刪除此欄位嗎?</p>                 
+          
+              </div>
+              <div class="modal-footer">
+                  <button type="button" id="RunDelete" class="btn btn-primary">刪除</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+        <!-- 最新編譯和最佳化的 JavaScript -->
+        <!-- <script src ="http://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+        <!-- 動作(js檔) -->
+        <script src = "demo.js"></script>
+
+
+    </body>
+</html>
